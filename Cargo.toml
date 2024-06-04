@@ -1,8 +1,4 @@
-[package]
-name = "gym_ops"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+resolver = "2"
 
-[dependencies]
-axum = "0.7.5"
-tokio = { version = "1.38.0", features = ["full"] }
+members = ["crates/*"]
