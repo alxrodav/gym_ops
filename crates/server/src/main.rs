@@ -1,14 +1,22 @@
+mod config;
+mod logger;
+use std::net::SocketAddr;
+
 use axum::{response::Html, routing::get, Router};
+use config::Config;
+use logger::init_logger;
 
 #[tokio::main]
 async fn main() {
+    init_logger();
+
+    let config = Config::from_env();
     let app = Router::new().route("/", get(hello_world));
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:4000")
-        .await
-        .unwrap();
+    let address = SocketAddr::from(([0, 0, 0, 0], config.port));
+    let listener = tokio::net::TcpListener::bind(address).await.unwrap();
 
-    println!("Lintening on {}", listener.local_addr().unwrap());
+    log::info!("server lintening on {}", listener.local_addr().unwrap());
 
     axum::serve(listener, app).await.unwrap();
 }
