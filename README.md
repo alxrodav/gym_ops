@@ -3,7 +3,7 @@
 ## Server
 
 ```sh
-cd gops_server && cargo run
+cd gops_server && cargo watch -x run
 ```
 
 ### Update dependencies
