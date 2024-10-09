@@ -1,3 +1,6 @@
+# DB
+gym_ops.db*
+
 # SERVER
 /gops_server/target
 /gops_server/debug
@@ -21,3 +24,6 @@ Thumbs.db
 logs
 *.log
 .pnpm-debug.log*
+
+# DOTENV
+.env
